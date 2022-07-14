@@ -1,0 +1,458 @@
+/* Utilities */
+@media (max-width: 500px) {
+  .hidden-lg {
+    display: flex;
+  }
+}
+@media (min-width: 500px) {
+  .hidden-lg {
+    display: none;
+  }
+}
+@media (min-width: 500px) {
+  .hidden-sm {
+    display: flex;
+  }
+}
+@media (max-width: 500px) {
+  .hidden-sm {
+    display: none;
+  }
+}
+button {
+  border: none;
+  background: none;
+  appearance: none;
+}
+ul,
+ol {
+  list-style-type: none;
+  list-style: none;
+}
+img.hidden-lg,
+img.hidden-sm {
+  width: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Barlow, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+::before,
+::after {
+  box-sizing: inherit;
+}
+span {
+  font-size: 18px;
+}
+h1 {
+  font-family: Fraunces;
+}
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* Classes */
+@keyframes bounce {
+  from {
+    transform: translateY(-15%);
+  }
+  to {
+    transform: translateY(15%);
+  }
+}
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+.navigation h1 {
+  font-weight: 800;
+  font-family: Barlow;
+}
+.navigation ul {
+  display: none;
+  transform-origin: top right;
+}
+.navigation ul li {
+  cursor: pointer;
+}
+@media screen and (max-width: 500px) {
+  .navigation ul.active {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 100%;
+    inset: 250% 0 auto 0;
+    background-color: white;
+    padding: 1.5rem;
+    row-gap: 0.75rem;
+  }
+  .navigation ul.active li {
+    margin: auto;
+    color: #000;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2.5rem;
+    width: 50%;
+    text-align: center;
+  }
+  .navigation ul.active li.active {
+    background-color: hsl(51, 100%, 49%);
+  }
+  .navigation ul.active::after {
+    content: '';
+    width: 0;
+    height: 0;
+    top: 0;
+    right: 0;
+    border: 10px solid;
+    border-right-color: hsl(0, 0%, 100%);
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: hsl(0, 0%, 100%);
+    transform: translateY(-100%);
+    position: absolute;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .navigation ul {
+    position: relative;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+  }
+  .navigation ul::after {
+    display: none;
+  }
+  .navigation ul > li {
+    color: hsl(0, 0%, 100%);
+    margin: auto 0.25rem auto auto;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2.5rem;
+  }
+  .navigation ul > li.active {
+    background-color: hsl(0, 0%, 100%);
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .navigation ul > li:hover {
+    background-color: #fff3;
+    color: #fff;
+  }
+}
+.categories,
+.categories-2,
+.testimonials,
+.category,
+.category-2 {
+  scroll-snap-type: y proximity;
+}
+.header > img {
+  width: 100%;
+}
+.header > div {
+  position: absolute;
+  inset: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: hsl(0, 0%, 100%);
+}
+.header > div > svg {
+  margin-top: 7vw;
+  animation: bounce 400ms 200ms infinite alternate cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.header > div > h1 {
+  margin-top: 15vh;
+  font-size: 3rem;
+  letter-spacing: 4px;
+  word-spacing: 8px;
+  width: 100%;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+}
+div.categories {
+  display: grid;
+}
+div.categories img {
+  height: 100%;
+  width: 100%;
+}
+div.categories > div {
+  display: grid;
+}
+@media only screen and (min-width: 500px) {
+  div.categories > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+div.categories > div > div > span:nth-child(2) {
+  padding: 0 calc(1.5rem / 1.75);
+  font-weight: 600;
+  font-family: Barlow, sans-serif;
+}
+div.categories > div > div > * {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+@media only screen and (min-width: 500px) {
+  div.categories > div.category.reversed > div {
+    order: -1;
+  }
+}
+div.categories > div.category > div {
+  text-align: center;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+div.categories > div.category > div > h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: hsl(212, 27%, 19%);
+  font-family: Fraunces, sans-serif;
+}
+div.categories > div.category > div > span:nth-child(2) {
+  margin: auto;
+  font-size: 1.2rem;
+  color: hsl(232, 10%, 55%);
+}
+div.categories > div.category > div > span:last-child {
+  position: relative;
+  width: fit-content;
+  font-weight: 900;
+  font-family: Fraunces;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+div.categories > div.category > div > span:last-child::after {
+  content: '';
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  position: absolute;
+  border-radius: 5px;
+  z-index: -1;
+  opacity: 0.4;
+  transition: all 200ms ease-in-out;
+}
+div.categories > div.category > div > span:last-child:hover {
+  cursor: pointer;
+}
+div.categories > div.category > div > span:last-child:hover::after {
+  opacity: 1;
+}
+@media only screen and (min-width: 500px) {
+  div.categories > div.category > div {
+    text-align: left;
+    padding-right: calc(1.5rem*4);
+    padding-left: calc(1.5rem*4);
+    margin-right: auto;
+    align-self: center;
+    justify-self: center;
+  }
+  div.categories > div.category > div span {
+    padding: 0;
+  }
+}
+div.categories span.transform-brand::after {
+  background-color: hsl(51, 100%, 49%);
+}
+div.categories span.stand-out::after {
+  background-color: hsl(7, 99%, 70%);
+}
+div.categories-2 {
+  display: grid;
+}
+@media only screen and (min-width: 500px) {
+  div.categories-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+div.categories-2 > div.category-2 {
+  position: relative;
+  text-align: center;
+}
+div.categories-2 > div.category-2 > div {
+  position: absolute;
+  bottom: 0;
+  padding: 1.5rem;
+  padding-bottom: calc(1.5rem*1.5);
+  display: flex;
+  flex-direction: column;
+}
+div.categories-2 > div.category-2 > div > h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: Fraunces, sans-serif;
+}
+div.categories-2 > div.category-2 > div > span:nth-child(2) {
+  padding: 0;
+  margin-top: 0;
+}
+div.categories-2 > div.category-2 > div.graphic-text {
+  color: hsl(167, 40%, 24%);
+}
+div.categories-2 > div.category-2 > div.photography-text {
+  color: hsl(198, 62%, 26%);
+}
+@media only screen and (min-width: 1000px) {
+  div.categories-2 > div.category-2 > div {
+    bottom: 0;
+    margin: auto calc(1.5rem*6);
+  }
+}
+div.testimonials {
+  display: flex;
+  flex-direction: column;
+  row-gap: calc(1.5rem*3);
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+}
+@media only screen and (min-width: 500px) {
+  div.testimonials {
+    padding: calc(1.5rem * 4);
+  }
+  div.testimonials > h1 {
+    font-size: 1.4rem;
+  }
+}
+div.testimonials > h1 {
+  text-align: center;
+  color: hsl(232, 10%, 55%);
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  font-weight: 900;
+  font-family: Fraunces, sans-serif;
+}
+div.testimonials > div {
+  display: grid;
+  row-gap: calc(1.5rem*3);
+}
+@media only screen and (min-width: 500px) {
+  div.testimonials > div {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+div.testimonials > div > .testimonial-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+@media only screen and (min-width: 500px) {
+  div.testimonials > div > .testimonial-card {
+    row-gap: calc(1.5rem * 2);
+  }
+}
+div.testimonials > div > .testimonial-card div:first-child {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  overflow: hidden;
+}
+div.testimonials > div > .testimonial-card div:first-child img {
+  width: 100%;
+  height: 100%;
+}
+div.testimonials > div > .testimonial-card > span {
+  padding: 1.5rem;
+  text-align: center;
+  font-family: Barlow, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: hsl(213, 9%, 39%);
+}
+div.testimonials > div > .testimonial-card > div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: calc(1.5rem / 1.7);
+}
+div.testimonials > div > .testimonial-card > div:last-child > h1 {
+  font-size: 1.1rem;
+  font-family: Fraunces, sans-serif;
+  font-weight: 900;
+  color: hsl(212, 27%, 19%);
+}
+div.testimonials > div > .testimonial-card > div:last-child > span {
+  font-size: 1rem;
+  font-family: Barlow, sans-serif;
+  font-weight: 600;
+  color: hsl(210, 4%, 67%);
+}
+div.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0;
+}
+div.gallery > div {
+  display: flex;
+}
+@media only screen and (min-width: 500px) {
+  div.gallery {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+  }
+}
+footer {
+  background-color: hsl(168, 40%, 60%);
+  padding: calc(1.5rem*2);
+  display: flex;
+  flex-direction: column;
+  row-gap: calc(1.5rem*2);
+  align-items: center;
+  justify-content: space-around;
+  color: hsl(167, 40%, 24%);
+}
+footer > h1 {
+  font-family: Barlow;
+}
+footer > ul {
+  display: flex;
+  column-gap: 1.5rem;
+  font-family: Barlow;
+}
+footer > ul li:hover {
+  cursor: pointer;
+  color: hsl(0, 0%, 100%);
+}
+footer > div {
+  display: flex;
+  column-gap: 1.5rem;
+}
+footer > div svg:hover {
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+}
+div.attribution {
+  background-color: hsl(168, 40%, 60%);
+  color: hsl(212, 27%, 19%);
+  font-size: 13px;
+  text-align: center;
+  font-weight: 700;
+  margin: auto;
+  display: block;
+}
+div.attribution a {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  color: hsl(167, 40%, 24%);
+}

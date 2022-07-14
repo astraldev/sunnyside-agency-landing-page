@@ -1,0 +1,36 @@
+
+/* Utilities */
+.hidden-lg {
+  @media (max-width: @med-size) {
+    display: flex;
+  }
+  @media (min-width: @med-size) {
+    display: none;
+  }
+}
+
+.hidden-sm {
+  @media (min-width: @med-size) {
+    display: flex;
+  }
+  @media (max-width: @med-size) {
+    display: none;
+  }
+}
+
+button {
+  border: none;
+  background: none;
+  appearance: none;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  list-style: none;
+}
+
+img.hidden-lg, 
+img.hidden-sm {
+  width: 100%;
+}
